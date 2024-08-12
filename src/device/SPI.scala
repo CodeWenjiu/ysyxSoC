@@ -76,7 +76,7 @@ class APBSPI(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModul
       mspi.io.in.pwrite := true.B
       mspi.io.in.paddr  := "h10001014".U
       mspi.io.in.pprot  := "b001".U
-      mspi.io.in.pwdata := "h00000001".U
+      mspi.io.in.pwdata := "h00000000".U
       mspi.io.in.pstrb  := "b1111".U
     }.elsewhen(state === s_send_ss){
       mspi.io.in.psel := true.B
