@@ -43,7 +43,7 @@ class APBSPI(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModul
     val (in, _) = node.in(0)
     val spi_bundle = IO(new SPIIO)
 
-    val s_idle :: s_send_addr :: s_send_divider :: s_send_ss :: s_send_ctrl :: s_transmit :: s_wait_receive :: s_receive :: s_report :: Nil = Enum(9)
+    val s_idle :: s_send_addr :: s_send_divider :: s_send_ss :: s_send_ctrl :: s_transmit :: s_wait_receive :: s_receive :: Nil = Enum(8)
 
     val state = RegInit(s_idle)
     
@@ -56,9 +56,8 @@ class APBSPI(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModul
       s_send_ss       -> Mux(mspi.io.in.pready, s_send_ctrl, state),
       s_send_ctrl     -> Mux(mspi.io.in.pready, s_transmit, state),
       s_transmit      -> Mux(mspi.io.in.pready, s_wait_receive, state),
-      s_wait_receive  -> Mux(mspi.io.in.pready && !(mspi.io.in.prdata(8)), s_receive, state),
-      s_receive       -> Mux(mspi.io.in.pready, s_report, state),
-      s_report        -> Mux(mspi.io.in.pready, s_idle, state)
+      s_wait_receive  -> Mux(mspi.io.spi_irq_out, s_receive, state),
+      s_receive       -> Mux(mspi.io.in.pready, s_idle, state)
     ))
 
     when(state === s_idle){
@@ -93,7 +92,7 @@ class APBSPI(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModul
       mspi.io.in.pwrite := true.B
       mspi.io.in.paddr  := "h10001010".U
       mspi.io.in.pprot  := "b001".U
-      mspi.io.in.pwdata := "h00002040".U
+      mspi.io.in.pwdata := "h00003040".U
       mspi.io.in.pstrb  := "b1111".U
     }.elsewhen(state === s_transmit){
       mspi.io.in.psel := true.B
@@ -101,13 +100,13 @@ class APBSPI(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModul
       mspi.io.in.pwrite := true.B
       mspi.io.in.paddr  := "h10001010".U
       mspi.io.in.pprot  := "b001".U
-      mspi.io.in.pwdata := "h00002140".U
+      mspi.io.in.pwdata := "h00003140".U
       mspi.io.in.pstrb  := "b1111".U
     }.elsewhen(state === s_wait_receive){
       mspi.io.in.psel := true.B
       mspi.io.in.penable := true.B
       mspi.io.in.pwrite := false.B
-      mspi.io.in.paddr  := "h10001010".U
+      mspi.io.in.paddr  := "h10001000".U
       mspi.io.in.pprot  := "b001".U
       mspi.io.in.pwdata := "h00000000".U
       mspi.io.in.pstrb  := "b0000".U
@@ -123,7 +122,7 @@ class APBSPI(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModul
 
     when(state === s_idle){
       in <> mspi.io.in
-    }.elsewhen(state === s_report){
+    }.elsewhen(state === s_receive){
       in.prdata := mspi.io.in.prdata
       in.pready := true.B
       in.pslverr := false.B
