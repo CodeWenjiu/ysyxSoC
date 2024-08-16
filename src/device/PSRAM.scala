@@ -33,6 +33,7 @@ class psram_healper extends BlackBox with HasBlackBoxInline {
     val wraddr = Input(UInt(24.W))
     val ren = Input(Bool())
     val wen = Input(Bool())
+    val wlen = Input(UInt(8.W))
     val rdata = Output(UInt(32.W))
     val wdata = Input(UInt(32.W))
   })
@@ -41,14 +42,15 @@ class psram_healper extends BlackBox with HasBlackBoxInline {
     |  input  [23:0] wraddr,
     |  input  ren,
     |  input  wen,
+    |  input  [7:0] wlen,
     |  input  [31:0] wdata,
     |  output reg [31:0] rdata
     |);
     |import "DPI-C" function void psram_read(input int raddr, output int rdata);
-    |import "DPI-C" function void psram_write(input int waddr, input int wdata);
+    |import "DPI-C" function void psram_write(input int waddr, input int wdata, input int wlen);
     |
-    |  always_latch begin
-    |    if (wen) psram_write({8'h00, wraddr}, wdata);
+    |  always @(posedge ren or posedge wen) begin
+    |    if (wen) psram_write({8'h00, wraddr}, wdata, {24'h000000, wlen});
     |    else if (ren) psram_read({8'h00, wraddr}, rdata);
     |    else rdata = 0;
     |  end
@@ -70,41 +72,50 @@ class psramChisel extends RawModule {
   val reset = io.ce_n.asAsyncReset
 
   val state = withClockAndReset(clock, reset)(RegInit(s_idle))
-  val last_time_state = withClockAndReset(clock, reset)(RegInit(s_idle))
+  val last_time_state = withClockAndReset(clock, false.B)(RegInit(s_idle))
 
   val command_buffer = withClockAndReset(clock, reset)(RegInit(0.U(8.W)))
-  val address_buffer = withClockAndReset(clock, reset)(RegInit(0.U(24.W)))
-  val data_buffer = withClockAndReset(clock, reset)(RegInit(0.U(32.W)))
+  val address_buffer = withClockAndReset(clock, false.B)(RegInit(0.U(24.W)))
+  val data_buffer = withClockAndReset(clock, false.B)(RegInit(0.U(32.W)))
   val sck_counter = withClockAndReset(clock, reset)(RegInit(0.U(8.W)))
+
+  val len_counter = withClockAndReset(clock, false.B)(RegInit(1.U(8.W)))
+
+  when(state === s_write){
+    len_counter := len_counter + 1.U
+  }.elsewhen(state === s_idle){
+    len_counter := 0.U
+  }
 
   val healper = Module(new psram_healper)
 
-  command_buffer := Cat(command_buffer(7, 1), din(0))
-  when(state === s_read_wait_addr || state === s_write_wait_addr){
-    address_buffer := Cat(address_buffer(23, 4), din(3, 0))
+  command_buffer := Cat(command_buffer(6, 0), din(0))
+  when(sck_counter < "h0E".U){
+    address_buffer := Cat(address_buffer(19, 0), din(3, 0))
   }
   when(state === s_write || state === s_read){
-    data_buffer := Cat(data_buffer(31, 4), din(3, 0))
-  }.elsewhen(state === s_read_delay){
-    data_buffer := healper.io.rdata
+    data_buffer := Cat(data_buffer(27, 0), din(3, 0))
+  }.elsewhen(sck_counter === "h0E".U){
+    data_buffer := Cat(healper.io.rdata(7, 0), healper.io.rdata(15, 8), healper.io.rdata(23, 16), healper.io.rdata(31, 24))
   }
   sck_counter := sck_counter + 1.U
 
   healper.io.wraddr := address_buffer
-  healper.io.wdata  := data_buffer
-  healper.io.ren    := state === s_read_delay && last_time_state === s_idle
+  healper.io.wdata  := Cat(data_buffer(7, 0), data_buffer(15, 8), data_buffer(23, 16), data_buffer(31, 24))
+  healper.io.ren    := state === s_read_delay && last_time_state === s_read_wait_addr
   healper.io.wen    := state === s_idle && last_time_state === s_write
+  healper.io.wlen   := len_counter
 
   den := state === s_read
   dout := data_buffer(31, 28)
 
   state := MuxLookup(state, s_idle)(Seq(
-    s_idle -> Mux(sck_counter === 8.U, Mux(command_buffer =/= "hE8".U(8.W), Mux(command_buffer =/= "h38".U(8.W), state, s_write_wait_addr), s_read_wait_addr), state),
-    s_read_wait_addr -> Mux(sck_counter === 14.U, s_read_delay, state),
-    s_write_wait_addr -> Mux(sck_counter === 14.U, s_write, state),
+    s_idle -> Mux(sck_counter === 8.U, Mux(command_buffer =/= "hEB".U(8.W), Mux(command_buffer =/= "h38".U(8.W), state, s_write_wait_addr), s_read_wait_addr), state),
+    s_read_wait_addr -> Mux(sck_counter === 13.U, s_read_delay, state),
+    s_write_wait_addr -> Mux(sck_counter === 13.U, s_write, state),
     s_read_delay -> Mux(sck_counter === 20.U, s_read, state),
     s_read -> Mux(sck_counter === 28.U, s_idle, state),
-    s_write -> Mux(sck_counter === 20.U, s_idle, state)
+    s_write -> Mux(sck_counter === 21.U, s_idle, state)
   ))
   last_time_state := state
 }
