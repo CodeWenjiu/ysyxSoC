@@ -101,18 +101,21 @@ class sdramChisel extends RawModule {
   
   val state = withClockAndReset(clock, reset)(RegInit(s_idle))
 
-  val raw_address = withClockAndReset(clock, reset)(RegInit(0.U(15.W)))
+  val raw_address = withClockAndReset(clock, reset)(RegInit(VecInit(Seq.fill(4)(0.U(13.W)))))
   val column_address = withClockAndReset(clock, reset)(RegInit(0.U(9.W)))
+  val rawaddr_cache = withClockAndReset(clock, reset)(RegInit(0.U(15.W)))
   val burst_transfer_count = withClockAndReset(clock, reset)(RegInit(0.U(10.W)))
 
   when(command === "b0011".U){
-    raw_address := Cat(io.a, io.ba)
+    raw_address(io.ba) := io.a
   }.elsewhen(command === "b0101".U){
     column_address := io.a(8, 0)
     burst_transfer_count := 1.U
+    rawaddr_cache := Cat(raw_address(io.ba), io.ba)
   }.elsewhen(command === "b0100".U){
     column_address := io.a(8, 0)
     burst_transfer_count := 1.U
+    rawaddr_cache := Cat(raw_address(io.ba), io.ba)
   }.elsewhen(burst_transfer_count > 0.U){
     burst_transfer_count := burst_transfer_count - 1.U
     column_address := column_address + 1.U
@@ -132,9 +135,9 @@ class sdramChisel extends RawModule {
   healper.io.clk := io.clk
 
   when(io.dqm === "b01".U){
-    healper.io.wraddr := Cat(raw_address, column_address, true.B)
+    healper.io.wraddr := Cat(rawaddr_cache, column_address, true.B)
   }.otherwise{
-    healper.io.wraddr := Cat(raw_address, column_address, false.B)
+    healper.io.wraddr := Cat(rawaddr_cache, column_address, false.B)
   }
   healper.io.ren := state === s_burst_read
   healper.io.wen := (state === s_burst_write) & (io.dqm =/= "b11".U)
