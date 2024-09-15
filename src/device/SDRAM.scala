@@ -138,7 +138,11 @@ class sdramChisel extends RawModule {
   }
   healper.io.ren := state === s_burst_read
   healper.io.wen := (state === s_burst_write) & (io.dqm =/= "b11".U)
-  healper.io.wdata := din
+  when(io.dqm === "b01".U){
+    healper.io.wdata := din >> 8.U
+  }.otherwise{
+    healper.io.wdata := din
+  }
   when(io.dqm === "b00".U){
     healper.io.wlen := 2.U
   }.otherwise{
