@@ -19,8 +19,8 @@ class SDRAMIO extends Bundle {
   val we  = Output(Bool())
   val a   = Output(UInt(13.W))
   val ba  = Output(UInt(2.W))
-  val dqm = Output(UInt(2.W))
-  val dq  = Analog(16.W)
+  val dqm = Output(UInt(4.W))
+  val dq  = Analog(32.W)
 }
 
 class sdram_top_axi extends BlackBox {
@@ -91,7 +91,7 @@ class sdramChisel extends RawModule {
   val s_idle :: s_burst_read :: s_burst_write :: Nil = Enum(3)
 
   val den = Wire(Bool())
-  val dout = Wire(UInt(16.W))
+  val dout = Wire(UInt(32.W))
   val din = TriStateInBuf(io.dq, dout, den)
 
   val clock = io.clk.asClock
@@ -104,21 +104,15 @@ class sdramChisel extends RawModule {
   val raw_address = withClockAndReset(clock, reset)(RegInit(VecInit(Seq.fill(4)(0.U(13.W)))))
   val column_address = withClockAndReset(clock, reset)(RegInit(0.U(9.W)))
   val rawaddr_cache = withClockAndReset(clock, reset)(RegInit(0.U(15.W)))
-  val burst_transfer_count = withClockAndReset(clock, reset)(RegInit(0.U(10.W)))
 
   when(command === "b0011".U){
     raw_address(io.ba) := io.a
   }.elsewhen(command === "b0101".U){
     column_address := io.a(8, 0)
-    burst_transfer_count := 1.U
     rawaddr_cache := Cat(raw_address(io.ba), io.ba)
   }.elsewhen(command === "b0100".U){
     column_address := io.a(8, 0)
-    burst_transfer_count := 1.U
     rawaddr_cache := Cat(raw_address(io.ba), io.ba)
-  }.elsewhen(burst_transfer_count > 0.U){
-    burst_transfer_count := burst_transfer_count - 1.U
-    column_address := column_address + 1.U
   }
 
   state := MuxLookup(state, s_idle)(Seq(
@@ -126,37 +120,64 @@ class sdramChisel extends RawModule {
       "b0101".U -> s_burst_read,
       "b0100".U -> s_burst_write
     )),
-    s_burst_read -> Mux(burst_transfer_count === 0.U, s_idle, s_burst_read),
-    s_burst_write -> Mux(burst_transfer_count === 0.U, s_idle, s_burst_write)
+    s_burst_read -> s_idle,
+    s_burst_write -> s_idle
   ))
 
-  val healper = Module(new sdram_healper)
+  val healper1 = Module(new sdram_healper)
+  val healper2 = Module(new sdram_healper)
+  
+  val ren = Wire(Bool())
+  val ren_delay = withClockAndReset(clock, reset)(RegInit(0.U(1.W)))
 
-  healper.io.clk := io.clk
+  ren := (state === s_burst_read)
+  ren_delay := ren
 
-  when(io.dqm === "b01".U){
-    healper.io.wraddr := Cat(rawaddr_cache, column_address, true.B)
+  healper1.io.clk := io.clk
+  healper2.io.clk := io.clk
+
+  when(io.dqm(1, 0) === "b01".U){
+    healper1.io.wraddr := Cat(rawaddr_cache, column_address, true.B)
   }.otherwise{
-    healper.io.wraddr := Cat(rawaddr_cache, column_address, false.B)
-  }
-  healper.io.ren := state === s_burst_read
-  healper.io.wen := (state === s_burst_write) & (io.dqm =/= "b11".U)
-  when(io.dqm === "b01".U){
-    healper.io.wdata := din >> 8.U
-  }.otherwise{
-    healper.io.wdata := din
-  }
-  when(io.dqm === "b00".U){
-    healper.io.wlen := 2.U
-  }.otherwise{
-    healper.io.wlen := 1.U
+    healper1.io.wraddr := Cat(rawaddr_cache, column_address, false.B)
   }
 
-  val wen_delay = withClockAndReset(clock, reset)(RegInit(0.U(1.W)))
-  wen_delay := healper.io.ren
+  when(io.dqm(3, 2) === "b01".U){
+    healper2.io.wraddr := Cat(rawaddr_cache, column_address, true.B) + 2.U // + 2 is not need for real hardware but benefit for simulation
+  }.otherwise{
+    healper2.io.wraddr := Cat(rawaddr_cache, column_address, false.B) + 2.U
+  }
+  
+  healper1.io.ren := ren
+  healper2.io.ren := ren
 
-  den := wen_delay
-  dout := healper.io.rdata
+  healper1.io.wen := (state === s_burst_write) & (io.dqm(1, 0) =/= "b11".U)
+  healper2.io.wen := (state === s_burst_write) & (io.dqm(3, 2) =/= "b11".U)
+
+  when(io.dqm(1, 0) === "b01".U){
+    healper1.io.wdata := din >> 8.U
+  }.otherwise{
+    healper1.io.wdata := din
+  }
+  when(io.dqm(1, 0) === "b00".U){
+    healper1.io.wlen := 2.U
+  }.otherwise{
+    healper1.io.wlen := 1.U
+  }
+
+  when(io.dqm(3, 2) === "b01".U){
+    healper2.io.wdata := din >> 24.U
+  }.otherwise{
+    healper2.io.wdata := din >> 16.U
+  }
+  when(io.dqm(3, 2) === "b00".U){
+    healper2.io.wlen := 2.U
+  }.otherwise{
+    healper2.io.wlen := 1.U
+  }
+
+  den := ren_delay
+  dout := Cat(healper2.io.rdata, healper1.io.rdata)
 }
 
 class AXI4SDRAM(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModule {
