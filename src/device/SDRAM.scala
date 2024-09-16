@@ -126,6 +126,8 @@ class sdramChisel extends RawModule {
 
   val healper1 = Module(new sdram_healper)
   val healper2 = Module(new sdram_healper)
+  val healper3 = Module(new sdram_healper)
+  val healper4 = Module(new sdram_healper)
   
   val ren = Wire(Bool())
   val ren_delay = withClockAndReset(clock, reset)(RegInit(0.U(1.W)))
@@ -135,24 +137,42 @@ class sdramChisel extends RawModule {
 
   healper1.io.clk := io.clk
   healper2.io.clk := io.clk
+  healper3.io.clk := io.clk
+  healper4.io.clk := io.clk
 
   when(io.dqm(1, 0) === "b01".U){
-    healper1.io.wraddr := Cat(rawaddr_cache, column_address, true.B)
+    healper1.io.wraddr := Cat(false.B, rawaddr_cache(13, 0), column_address, true.B)
   }.otherwise{
-    healper1.io.wraddr := Cat(rawaddr_cache, column_address, false.B)
+    healper1.io.wraddr := Cat(false.B, rawaddr_cache(13, 0), column_address, false.B)
   }
 
   when(io.dqm(3, 2) === "b01".U){
-    healper2.io.wraddr := Cat(rawaddr_cache, column_address, true.B) + 2.U // + 2 is not need for real hardware but benefit for simulation
+    healper2.io.wraddr := Cat(false.B, rawaddr_cache(13, 0), column_address, true.B) + 2.U // + 2 is not need for real hardware but benefit for simulation
   }.otherwise{
-    healper2.io.wraddr := Cat(rawaddr_cache, column_address, false.B) + 2.U
+    healper2.io.wraddr := Cat(false.B, rawaddr_cache(13, 0), column_address, false.B) + 2.U
+  }
+
+  when(io.dqm(1, 0) === "b01".U){
+    healper3.io.wraddr := Cat(true.B, rawaddr_cache(13, 0), column_address, true.B)
+  }.otherwise{
+    healper3.io.wraddr := Cat(true.B, rawaddr_cache(13, 0), column_address, false.B)
+  }
+
+  when(io.dqm(3, 2) === "b01".U){
+    healper4.io.wraddr := Cat(true.B, rawaddr_cache(13, 0), column_address, true.B) + 2.U
+  }.otherwise{
+    healper4.io.wraddr := Cat(true.B, rawaddr_cache(13, 0), column_address, false.B) + 2.U
   }
   
-  healper1.io.ren := ren
-  healper2.io.ren := ren
+  healper1.io.ren := ren & !rawaddr_cache(14)
+  healper2.io.ren := ren & !rawaddr_cache(14)
+  healper3.io.ren := ren &  rawaddr_cache(14)
+  healper4.io.ren := ren &  rawaddr_cache(14)
 
-  healper1.io.wen := (state === s_burst_write) & (io.dqm(1, 0) =/= "b11".U)
-  healper2.io.wen := (state === s_burst_write) & (io.dqm(3, 2) =/= "b11".U)
+  healper1.io.wen := (state === s_burst_write) & (io.dqm(1, 0) =/= "b11".U) & !rawaddr_cache(14)
+  healper2.io.wen := (state === s_burst_write) & (io.dqm(3, 2) =/= "b11".U) & !rawaddr_cache(14)
+  healper3.io.wen := (state === s_burst_write) & (io.dqm(1, 0) =/= "b11".U) &  rawaddr_cache(14)
+  healper4.io.wen := (state === s_burst_write) & (io.dqm(3, 2) =/= "b11".U) &  rawaddr_cache(14)
 
   when(io.dqm(1, 0) === "b01".U){
     healper1.io.wdata := din >> 8.U
@@ -176,8 +196,30 @@ class sdramChisel extends RawModule {
     healper2.io.wlen := 1.U
   }
 
+  when(io.dqm(1, 0) === "b01".U){
+    healper3.io.wdata := din >> 8.U
+  }.otherwise{
+    healper3.io.wdata := din
+  }
+  when(io.dqm(1, 0) === "b00".U){
+    healper3.io.wlen := 2.U
+  }.otherwise{
+    healper3.io.wlen := 1.U
+  }
+
+  when(io.dqm(3, 2) === "b01".U){
+    healper4.io.wdata := din >> 24.U
+  }.otherwise{
+    healper4.io.wdata := din >> 16.U
+  }
+  when(io.dqm(3, 2) === "b00".U){
+    healper4.io.wlen := 2.U
+  }.otherwise{
+    healper4.io.wlen := 1.U
+  }
+
   den := ren_delay
-  dout := Cat(healper2.io.rdata, healper1.io.rdata)
+  dout := Mux(rawaddr_cache(14), Cat(healper4.io.rdata, healper3.io.rdata), Cat(healper2.io.rdata, healper1.io.rdata))
 }
 
 class AXI4SDRAM(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModule {
