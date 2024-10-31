@@ -161,8 +161,10 @@ class ysyxSoCFull(implicit p: Parameters) extends LazyModule {
 
 class fpgaSoCASIC(implicit p: Parameters) extends LazyModule {
   val xbar = AXI4Xbar()
-  val cpu = LazyModule(new CPU(idBits = ChipLinkParam.idBits))
-  xbar := cpu.masterNode
+  val cpu0 = LazyModule(new CPU(idBits = ChipLinkParam.idBits))
+  val cpu1 = LazyModule(new CPU(idBits = ChipLinkParam.idBits))
+  xbar := cpu0.masterNode
+  xbar := cpu1.masterNode
 
   val sdramAddressSet = AddressSet.misaligned(0xa0000000L, 0x2000000)
   val lsdram = Some(LazyModule(new AXI4SDRAM(sdramAddressSet)))
@@ -170,10 +172,13 @@ class fpgaSoCASIC(implicit p: Parameters) extends LazyModule {
 
   override lazy val module = new Impl
   class Impl extends LazyModuleImp(this) with DontTouch {
-    cpu.module.reset := SynchronizerShiftReg(reset.asBool, 10) || reset.asBool
+    cpu0.module.reset := SynchronizerShiftReg(reset.asBool, 10) || reset.asBool
+    cpu1.module.reset := SynchronizerShiftReg(reset.asBool, 10) || reset.asBool
     val intr_from_chipSlave = IO(Input(Bool()))
-    cpu.module.interrupt := intr_from_chipSlave
-    cpu.module.slave := DontCare
+    cpu0.module.interrupt := intr_from_chipSlave
+    cpu1.module.interrupt := intr_from_chipSlave
+    cpu0.module.slave := DontCare
+    cpu1.module.slave := DontCare
   }
 }
 
