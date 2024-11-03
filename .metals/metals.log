@@ -275,3 +275,68 @@ WARNING: Unmatched cancel notification for request id 7079
 2024.11.03 15:23:47 WARN  102 deprecations (since rocketchip 2.0.0)[0m
 2024.11.03 15:23:47 WARN  104 deprecations in total; re-run with -deprecation for details[0m
 2024.11.03 15:23:47 INFO  time: compiled ysyxsoc in 3.35s[0m
+Nov 03, 2024 11:22:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 03, 2024 11:22:36 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 262
+Nov 03, 2024 11:22:36 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 263
+2024.11.03 23:33:08 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.03 23:33:08 INFO  time: compiled ysyxsoc in 0.27s[0m
+2024.11.03 23:33:16 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.03 23:33:16 INFO  time: compiled ysyxsoc in 0.23s[0m
+2024.11.03 23:33:20 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.03 23:33:20 WARN  34 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.03 23:33:21 INFO  time: compiled ysyxsoc in 1s[0m
+2024.11.04 01:05:49 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.04 01:05:49 INFO  time: compiled ysyxsoc in 0.23s[0m
+2024.11.04 01:05:50 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+Nov 04, 2024 1:07:11 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 541
+2024.11.04 01:07:12 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:12 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:12 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:12 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:12 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:20 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:21 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:22 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:24 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:25 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/SoC.scala[0m
+2024.11.04 01:07:25 INFO  time: compiled ysyxsoc in 21ms[0m
+Nov 04, 2024 1:07:38 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 04, 2024 1:07:38 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 04, 2024 1:07:39 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 04, 2024 1:07:39 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 04, 2024 1:07:39 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 04, 2024 1:07:39 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2024.11.04 01:10:02 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.04 01:10:02 WARN  34 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.04 01:10:02 INFO  time: compiled ysyxsoc in 0.94s[0m
+2024.11.04 01:10:02 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.04 01:10:03 WARN  2 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.04 01:10:03 INFO  time: compiled ysyxsoc in 0.41s[0m
+2024.11.04 01:10:08 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.04 01:10:08 WARN  34 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.04 01:10:08 INFO  time: compiled ysyxsoc in 0.93s[0m
