@@ -22,7 +22,46 @@ class axi4_delayer extends BlackBox {
 
 class AXI4DelayerChisel extends Module {
   val io = IO(new AXI4DelayerIO)
-  io.out <> io.in
+  io.in <> io.out
+  // def r = 10
+
+  // val s_idle :: s_wait_resp :: s_delay :: s_transmit :: Nil = Enum(4)
+  // val r_state = RegInit(s_idle)
+
+  // val r_delay_cnt = RegInit(0.U(10.W))
+  // val r_delay_target = RegInit(0.U(10.W))
+
+  // r_state := MuxLookup(r_state, s_idle)(
+  //   Seq(
+  //     s_idle -> Mux(io.in.ar.fire, s_wait_resp, s_idle),
+  //     s_wait_resp -> Mux(io.out.r.valid, s_delay, s_wait_resp),
+  //     s_delay -> Mux(r_delay_cnt === r_delay_target, s_transmit, s_delay),
+  //     s_transmit -> Mux(io.out.ar.fire, s_idle, s_transmit)
+  //   )
+  // )
+
+  // when(r_state === s_wait_resp || r_state === s_delay) {
+  //   r_delay_cnt := r_delay_cnt + 1.U
+  // }.elsewhen(r_state === s_transmit){
+  //   r_delay_cnt := 0.U
+  // }
+
+  // when(r_state === s_wait_resp) {
+  //   r_delay_target := r_delay_target * r.U
+  // }.elsewhen(r_state === s_transmit){
+  //   r_delay_target := 0.U
+  // }
+
+  // when(r_state === s_transmit){
+  //   io.out.r <> io.in.r
+  // }.otherwise{
+  //   io.out.r.valid := false.B
+  //   io.out.r.bits := DontCare
+
+  //   io.in.r.ready := false.B
+  // }
+
+  // io.in.ar <> io.out.ar
 }
 
 class AXI4DelayerWrapper(implicit p: Parameters) extends LazyModule {
@@ -31,7 +70,7 @@ class AXI4DelayerWrapper(implicit p: Parameters) extends LazyModule {
   lazy val module = new Impl
   class Impl extends LazyModuleImp(this) {
     (node.in zip node.out) foreach { case ((in, edgeIn), (out, edgeOut)) =>
-      val delayer = Module(new axi4_delayer)
+      val delayer = Module(new AXI4DelayerChisel)
       delayer.io.clock := clock
       delayer.io.reset := reset
       delayer.io.in <> in

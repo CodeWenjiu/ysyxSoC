@@ -340,3 +340,442 @@ INFO: Unsupported notification method: $/setTrace
 2024.11.04 01:10:08 INFO  compiling ysyxsoc (1 scala source)[0m
 2024.11.04 01:10:08 WARN  34 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
 2024.11.04 01:10:08 INFO  time: compiled ysyxsoc in 0.93s[0m
+2024.11.06 19:04:24 INFO  Shutting down server[0m
+2024.11.06 19:04:24 INFO  shutting down Metals[0m
+2024.11.06 19:04:24 INFO  Shut down connection with build server.[0m
+2024.11.06 19:04:24 INFO  Exiting server[0m
+2024.11.07 04:16:21 INFO  Started: Metals version 1.4.0 in folders '/home/wenjiu/ysyx-workbench/ysyxSoC' for client Visual Studio Code 1.95.1.[0m
+2024.11.07 04:16:21 WARN  Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.[0m
+2024.11.07 04:16:21 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.07 04:16:22 INFO  Attempting to connect to the build server...[0m
+2024.11.07 04:16:22 INFO  No running Bloop server found, starting one.[0m
+2024.11.07 04:16:23 INFO  Starting compilation server[0m
+2024.11.07 04:16:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/wenjiu/ysyx-workbench/ysyxSoC/.metals/bsp.trace.json or /home/wenjiu/.cache/metals/bsp.trace.json[0m
+2024.11.07 04:16:25 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+Nov 07, 2024 4:16:25 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3
+2024.11.07 04:16:25 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.07 04:16:25 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.07 04:16:25 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.07 04:16:25 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+Nov 07, 2024 4:16:25 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11
+Nov 07, 2024 4:16:25 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 12
+2024.11.07 04:16:30 INFO  time: Connected to build server in 7.71s[0m
+2024.11.07 04:16:30 INFO  Connected to Build server: Bloop v2.0.3[0m
+2024.11.07 04:16:30 INFO  time: Imported build in 0.13s[0m
+2024.11.07 04:16:30 INFO  running doctor check[0m
+2024.11.07 04:16:30 INFO  java targets: rocketchip.hardfloat, mill-build-, rocketchip.diplomacy, rocketchip.cde, ysyxsoc, rocketchip, rocketchip.macros[0m
+2024.11.07 04:16:30 WARN  2.13.10 is no longer supported in the current Metals versions, using the last known supported version 1.3.3[0m
+2024.11.07 04:16:33 WARN  Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.[0m
+2024.11.07 04:16:33 INFO  time: indexed workspace in 2.54s[0m
+2024.11.07 04:16:36 INFO  compiling rocketchip.macros (1 scala source)[0m
+2024.11.07 04:16:36 INFO  compiling rocketchip.cde (1 scala source)[0m
+2024.11.07 04:16:36 INFO  compiling rocketchip.hardfloat (20 scala sources)[0m
+2024.11.07 04:16:38 INFO  time: compiled rocketchip.macros in 2.45s[0m
+2024.11.07 04:16:38 INFO  time: compiled rocketchip.cde in 2.45s[0m
+2024.11.07 04:16:38 INFO  compiling rocketchip.diplomacy (36 scala sources)[0m
+2024.11.07 04:16:44 INFO  time: compiled rocketchip.diplomacy in 5.81s[0m
+2024.11.07 04:16:44 INFO  time: compiled rocketchip.hardfloat in 8.34s[0m
+2024.11.07 04:16:44 INFO  compiling rocketchip (317 scala sources)[0m
+2024.11.07 04:17:13 WARN  8 deprecations[0m
+2024.11.07 04:17:13 WARN  78 deprecations (since 2.13.0)[0m
+2024.11.07 04:17:13 WARN  1 deprecation (since 2.13.7)[0m
+2024.11.07 04:17:13 WARN  27 deprecations (since CDE 0.1)[0m
+2024.11.07 04:17:13 WARN  10 deprecations (since diplomacy 1.0.0)[0m
+2024.11.07 04:17:13 WARN  36 deprecations (since rocketchip 2.0.0)[0m
+2024.11.07 04:17:13 WARN  160 deprecations in total; re-run with -deprecation for details[0m
+2024.11.07 04:17:13 WARN  20 feature warnings; re-run with -feature for details[0m
+2024.11.07 04:17:13 INFO  compiling ysyxsoc (35 scala sources)[0m
+2024.11.07 04:17:13 INFO  time: compiled rocketchip in 33s[0m
+2024.11.07 04:17:17 WARN  1 deprecation (since 2.13.0)[0m
+2024.11.07 04:17:17 WARN  1 deprecation (since 2.13.3)[0m
+2024.11.07 04:17:17 WARN  99 deprecations (since rocketchip 2.0.0)[0m
+2024.11.07 04:17:17 WARN  101 deprecations in total; re-run with -deprecation for details[0m
+2024.11.07 04:17:17 INFO  time: compiled ysyxsoc in 3.57s[0m
+2024.11.07 04:31:36 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:31:36 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:31:36 INFO  time: compiled ysyxsoc in 0.76s[0m
+Nov 07, 2024 4:31:43 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 102
+Nov 07, 2024 4:31:44 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 104
+Nov 07, 2024 4:31:44 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 103
+Nov 07, 2024 4:34:03 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 879
+2024.11.07 04:34:10 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:34:10 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:34:10 INFO  time: compiled ysyxsoc in 0.72s[0m
+2024.11.07 04:34:15 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:34:15 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:34:15 INFO  time: compiled ysyxsoc in 0.66s[0m
+Nov 07, 2024 4:34:24 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1053
+Nov 07, 2024 4:34:24 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1054
+Nov 07, 2024 4:34:24 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1057
+Nov 07, 2024 4:35:18 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1643
+Nov 07, 2024 4:35:21 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1676
+2024.11.07 04:36:27 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:36:27 INFO  time: compiled ysyxsoc in 0.21s[0m
+Nov 07, 2024 4:36:31 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2184
+Nov 07, 2024 4:36:31 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2190
+2024.11.07 04:36:31 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:36:31 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:36:31 INFO  time: compiled ysyxsoc in 0.76s[0m
+Nov 07, 2024 4:36:53 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2233
+Nov 07, 2024 4:37:16 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2434
+2024.11.07 04:37:23 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:37:23 INFO  time: compiled ysyxsoc in 0.19s[0m
+2024.11.07 04:37:23 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:28 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:29 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:30 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:30 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:30 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:30 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:37:30 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:37:30 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:37:30 INFO  time: compiled ysyxsoc in 0.71s[0m
+Nov 07, 2024 4:38:07 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2756
+2024.11.07 04:38:19 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:38:19 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:38:19 INFO  time: compiled ysyxsoc in 0.73s[0m
+Nov 07, 2024 4:38:39 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2929
+Nov 07, 2024 4:38:39 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2937
+2024.11.07 04:39:03 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:39:03 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:39:03 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:39:03 INFO  time: compiled ysyxsoc in 0.71s[0m
+2024.11.07 04:39:09 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:39:09 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:39:09 INFO  time: compiled ysyxsoc in 0.72s[0m
+2024.11.07 04:39:47 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:39:47 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:39:47 INFO  time: compiled ysyxsoc in 0.77s[0m
+2024.11.07 04:40:43 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:40:43 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:40:43 INFO  time: compiled ysyxsoc in 0.77s[0m
+2024.11.07 04:40:44 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:40:52 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/AXI4Delayer.scala[0m
+2024.11.07 04:40:52 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 04:40:52 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 04:40:52 INFO  time: compiled ysyxsoc in 0.69s[0m
+Nov 07, 2024 5:13:51 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4478
+Nov 07, 2024 5:13:51 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4479
+Nov 07, 2024 5:26:06 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4749
+Nov 07, 2024 5:26:07 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4766
+Nov 07, 2024 5:26:07 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4767
+Nov 07, 2024 5:31:24 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 5120
+Nov 07, 2024 5:31:43 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 5362
+Nov 07, 2024 5:32:07 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 5543
+Nov 07, 2024 5:34:20 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 7036
+2024.11.07 05:34:21 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 05:34:21 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 05:34:21 INFO  time: compiled ysyxsoc in 0.69s[0m
+Nov 07, 2024 5:40:15 AM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/wenjiu/ysyx-workbench/ysyxSoC/.metals/.reports/metals-full/2024-11-07/r_compiler-error_(ysyxsoc)_05-40-15-357.md
+Nov 07, 2024 5:41:03 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8029
+2024.11.07 05:41:07 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 05:41:07 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 05:41:07 INFO  time: compiled ysyxsoc in 0.78s[0m
+2024.11.07 05:41:15 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 05:41:15 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 05:41:15 INFO  time: compiled ysyxsoc in 0.67s[0m
+2024.11.07 05:41:56 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 05:41:56 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 05:41:56 INFO  time: compiled ysyxsoc in 0.72s[0m
+2024.11.07 05:42:45 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 05:42:45 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 05:42:45 INFO  time: compiled ysyxsoc in 0.72s[0m
+2024.11.07 06:07:16 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 06:07:16 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 06:07:16 INFO  time: compiled ysyxsoc in 0.72s[0m
+2024.11.07 06:19:54 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 06:19:54 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 06:19:54 INFO  time: compiled ysyxsoc in 0.71s[0m
+Nov 07, 2024 6:34:31 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8469
+Nov 07, 2024 6:34:39 AM scala.meta.internal.pc.CompletionProvider expected$1
+WARNING: offset 1796, count -1, length 2600
+Nov 07, 2024 6:34:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8641
+Nov 07, 2024 6:35:18 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8888
+2024.11.07 06:35:31 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 06:35:31 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 06:35:31 INFO  time: compiled ysyxsoc in 0.72s[0m
+Nov 07, 2024 6:38:56 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9172
+2024.11.07 06:38:57 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 06:38:57 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 06:38:57 INFO  time: compiled ysyxsoc in 0.74s[0m
+2024.11.07 06:39:30 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.07 06:39:30 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.07 06:39:30 INFO  time: compiled ysyxsoc in 0.75s[0m
+2024.11.08 03:20:38 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 03:20:38 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 03:20:38 INFO  time: compiled ysyxsoc in 0.61s[0m
+2024.11.08 03:24:14 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 03:24:14 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 03:24:14 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 03:24:14 INFO  time: compiled ysyxsoc in 0.82s[0m
+2024.11.08 04:07:55 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:07:55 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:07:55 INFO  time: compiled ysyxsoc in 0.73s[0m
+2024.11.08 04:08:05 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:08:05 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:08:05 INFO  time: compiled ysyxsoc in 0.64s[0m
+2024.11.08 04:08:24 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:08:24 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:08:24 INFO  time: compiled ysyxsoc in 0.63s[0m
+Nov 08, 2024 4:20:00 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9754
+Nov 08, 2024 4:20:08 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9785
+2024.11.08 04:20:19 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:20:19 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:20:19 INFO  time: compiled ysyxsoc in 0.68s[0m
+Nov 08, 2024 4:20:25 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9824
+Nov 08, 2024 4:20:25 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9823
+2024.11.08 04:20:45 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:20:45 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:20:45 INFO  time: compiled ysyxsoc in 0.7s[0m
+Nov 08, 2024 4:21:07 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10111
+2024.11.08 04:21:25 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:21:25 INFO  time: compiled ysyxsoc in 0.13s[0m
+2024.11.08 04:21:52 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:21:52 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:21:52 INFO  time: compiled ysyxsoc in 0.67s[0m
+2024.11.08 04:23:26 ERROR searching for `.` failed
+java.lang.RuntimeException: invalid symbol format
+.
+^
+	at scala.sys.package$.error(package.scala:27)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.fail(Scala.scala:164)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.readChar(Scala.scala:176)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.parseValue(Scala.scala:192)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.parseDescriptor(Scala.scala:211)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.entryPoint(Scala.scala:232)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser$.apply(Scala.scala:240)
+	at scala.meta.internal.semanticdb.Scala$ScalaSymbolOps$.owner$extension(Scala.scala:80)
+	at scala.meta.internal.mtags.Symbol.toplevel(Symbol.scala:50)
+	at scala.meta.internal.mtags.SymbolIndexBucket.query0(SymbolIndexBucket.scala:200)
+	at scala.meta.internal.mtags.SymbolIndexBucket.query(SymbolIndexBucket.scala:177)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.$anonfun$findSymbolDefinition$1(OnDemandSymbolIndex.scala:142)
+	at scala.collection.immutable.List.flatMap(List.scala:294)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.findSymbolDefinition(OnDemandSymbolIndex.scala:142)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.definition(OnDemandSymbolIndex.scala:48)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.findInIndex$1(FallbackDefinitionProvider.scala:125)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$15(FallbackDefinitionProvider.scala:132)
+	at scala.collection.immutable.List.flatMap(List.scala:294)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$3(FallbackDefinitionProvider.scala:131)
+	at scala.Option.map(Option.scala:242)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$2(FallbackDefinitionProvider.scala:43)
+	at scala.Option.flatMap(Option.scala:283)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$1(FallbackDefinitionProvider.scala:40)
+	at scala.Option.flatMap(Option.scala:283)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.search(FallbackDefinitionProvider.scala:39)
+	at scala.meta.internal.metals.DefinitionProvider.$anonfun$definition$3(DefinitionProvider.scala:120)
+	at scala.Option.orElse(Option.scala:477)
+	at scala.meta.internal.metals.DefinitionProvider.$anonfun$definition$2(DefinitionProvider.scala:120)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:467)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2024.11.08 04:23:26 ERROR searching for `#` failed
+java.lang.RuntimeException: invalid symbol format
+#
+^
+	at scala.sys.package$.error(package.scala:27)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.fail(Scala.scala:164)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.readChar(Scala.scala:176)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.parseValue(Scala.scala:192)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.parseDescriptor(Scala.scala:214)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.entryPoint(Scala.scala:232)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser$.apply(Scala.scala:240)
+	at scala.meta.internal.semanticdb.Scala$ScalaSymbolOps$.owner$extension(Scala.scala:80)
+	at scala.meta.internal.mtags.Symbol.toplevel(Symbol.scala:50)
+	at scala.meta.internal.mtags.SymbolIndexBucket.query0(SymbolIndexBucket.scala:200)
+	at scala.meta.internal.mtags.SymbolIndexBucket.query(SymbolIndexBucket.scala:177)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.$anonfun$findSymbolDefinition$1(OnDemandSymbolIndex.scala:142)
+	at scala.collection.immutable.List.flatMap(List.scala:294)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.findSymbolDefinition(OnDemandSymbolIndex.scala:142)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.definition(OnDemandSymbolIndex.scala:48)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.findInIndex$1(FallbackDefinitionProvider.scala:125)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$15(FallbackDefinitionProvider.scala:132)
+	at scala.collection.immutable.List.flatMap(List.scala:294)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$3(FallbackDefinitionProvider.scala:131)
+	at scala.Option.map(Option.scala:242)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$2(FallbackDefinitionProvider.scala:43)
+	at scala.Option.flatMap(Option.scala:283)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$1(FallbackDefinitionProvider.scala:40)
+	at scala.Option.flatMap(Option.scala:283)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.search(FallbackDefinitionProvider.scala:39)
+	at scala.meta.internal.metals.DefinitionProvider.$anonfun$definition$3(DefinitionProvider.scala:120)
+	at scala.Option.orElse(Option.scala:477)
+	at scala.meta.internal.metals.DefinitionProvider.$anonfun$definition$2(DefinitionProvider.scala:120)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:467)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2024.11.08 04:23:26 ERROR searching for `().` failed
+java.lang.RuntimeException: invalid symbol format
+().
+^
+	at scala.sys.package$.error(package.scala:27)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.fail(Scala.scala:164)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.readChar(Scala.scala:176)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.parseValue(Scala.scala:192)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.parseDescriptor(Scala.scala:209)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser.entryPoint(Scala.scala:232)
+	at scala.meta.internal.semanticdb.Scala$DescriptorParser$.apply(Scala.scala:240)
+	at scala.meta.internal.semanticdb.Scala$ScalaSymbolOps$.owner$extension(Scala.scala:80)
+	at scala.meta.internal.mtags.Symbol.toplevel(Symbol.scala:50)
+	at scala.meta.internal.mtags.SymbolIndexBucket.query0(SymbolIndexBucket.scala:200)
+	at scala.meta.internal.mtags.SymbolIndexBucket.query(SymbolIndexBucket.scala:177)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.$anonfun$findSymbolDefinition$1(OnDemandSymbolIndex.scala:142)
+	at scala.collection.immutable.List.flatMap(List.scala:294)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.findSymbolDefinition(OnDemandSymbolIndex.scala:142)
+	at scala.meta.internal.mtags.OnDemandSymbolIndex.definition(OnDemandSymbolIndex.scala:48)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.findInIndex$1(FallbackDefinitionProvider.scala:125)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$15(FallbackDefinitionProvider.scala:132)
+	at scala.collection.immutable.List.flatMap(List.scala:294)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$3(FallbackDefinitionProvider.scala:131)
+	at scala.Option.map(Option.scala:242)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$2(FallbackDefinitionProvider.scala:43)
+	at scala.Option.flatMap(Option.scala:283)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.$anonfun$search$1(FallbackDefinitionProvider.scala:40)
+	at scala.Option.flatMap(Option.scala:283)
+	at scala.meta.internal.metals.FallbackDefinitionProvider.search(FallbackDefinitionProvider.scala:39)
+	at scala.meta.internal.metals.DefinitionProvider.$anonfun$definition$3(DefinitionProvider.scala:120)
+	at scala.Option.orElse(Option.scala:477)
+	at scala.meta.internal.metals.DefinitionProvider.$anonfun$definition$2(DefinitionProvider.scala:120)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:467)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2024.11.08 04:23:26 WARN  Could not find 'U' using presentation compiler nor semanticdb. Trying to guess the definition using available information from local class context. [0m
+2024.11.08 04:23:38 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:23:38 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:23:38 INFO  time: compiled ysyxsoc in 0.75s[0m
+2024.11.08 04:29:55 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:29:55 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:29:55 INFO  time: compiled ysyxsoc in 0.71s[0m
+2024.11.08 04:33:53 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:33:53 INFO  time: compiled ysyxsoc in 0.19s[0m
+2024.11.08 04:33:54 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:33:59 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:33:59 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:33:59 INFO  time: compiled ysyxsoc in 0.18s[0m
+2024.11.08 04:34:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:14 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+Nov 08, 2024 4:34:18 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11356
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:19 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:20 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:34:20 INFO  time: compiled ysyxsoc in 0.16s[0m
+2024.11.08 04:34:20 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:49 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:49 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+Nov 08, 2024 4:34:49 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11448
+2024.11.08 04:34:49 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:50 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+Nov 08, 2024 4:34:50 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11457
+2024.11.08 04:34:50 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:51 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+Nov 08, 2024 4:34:51 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11479
+2024.11.08 04:34:52 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:53 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:53 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:54 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:55 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:55 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:34:58 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:00 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:03 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:08 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:35:09 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:35:09 INFO  time: compiled ysyxsoc in 0.73s[0m
+2024.11.08 04:35:28 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:35:28 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:35:28 INFO  time: compiled ysyxsoc in 0.69s[0m
+2024.11.08 04:42:18 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:42:18 WARN  Could not load snapshot text for /home/wenjiu/ysyx-workbench/ysyxSoC/src/amba/APBDelayer.scala[0m
+2024.11.08 04:42:18 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:42:18 INFO  time: compiled ysyxsoc in 0.7s[0m
+2024.11.08 04:45:06 INFO  compiling ysyxsoc (1 scala source)[0m
+2024.11.08 04:45:06 WARN  3 deprecations (since rocketchip 2.0.0); re-run with -deprecation for details[0m
+2024.11.08 04:45:06 INFO  time: compiled ysyxsoc in 0.75s[0m
+Nov 08, 2024 1:08:22 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11992
+Nov 08, 2024 1:08:22 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11993

@@ -2,13 +2,13 @@
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| CPU文件名 | | `ysyx_8位学号.v`          | 如`ysyx_23060000.v`   |
-| CPU顶层模块名 | | `ysyx_8位学号`        | 如`ysyx_23060000`     |
-| CPU内部模块名 | | `ysyx_8位学号_模块名` | 如`ysyx_23060000_ALU` |
-| 时钟 | input | `clock` |
-| 复位(高电平有效) | input | `reset` |
-| 外部中断 | input | `io_interrupt` |
-| AXI4 Master总线 |   |                     | AXI4 Slave总线 |    |                    |
+| CPU文件名 |  | `ysyx_8位学号.v`          | 如`ysyx_23060000.v`   | | |
+| CPU顶层模块名 | | `ysyx_8位学号`        | 如`ysyx_23060000`     | | |
+| CPU内部模块名 | | `ysyx_8位学号_模块名` | 如`ysyx_23060000_ALU` | | |
+| 时钟 | input | `clock` | | | |
+| 复位(高电平有效) | input | `reset` | | | |
+| 外部中断 | input | `io_interrupt` | | |     |
+| AXI4 Master总线 |       |                     | AXI4 Slave总线 |    |                    |
 | `input`  |          | `io_master_awready` | `output` |          | `io_slave_awready` |
 | `output` |          | `io_master_awvalid` | `input`  |          | `io_slave_awvalid` |
 | `output` | `[31:0]` | `io_master_awaddr`  | `input`  | `[31:0]` | `io_slave_awaddr`  |
