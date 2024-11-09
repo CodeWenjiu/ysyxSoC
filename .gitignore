@@ -1,6 +1,3 @@
 build/
 out/
-.metals/**
-.metals/metals.mv.db
-.metals/metals.log
-.metals/metals.lock.db
+**/.metals
