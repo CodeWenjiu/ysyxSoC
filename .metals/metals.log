@@ -779,3 +779,70 @@ Nov 08, 2024 1:08:22 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellat
 WARNING: Unmatched cancel notification for request id 11992
 Nov 08, 2024 1:08:22 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
 WARNING: Unmatched cancel notification for request id 11993
+Nov 08, 2024 1:25:04 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11996
+Nov 08, 2024 1:25:04 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11997
+2024.11.08 17:40:18 INFO  Started: Metals version 1.4.0 in folders '/home/wenjiu/ysyx-workbench/ysyxSoC' for client Visual Studio Code 1.95.2.[0m
+2024.11.08 17:40:22 WARN  Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.[0m
+2024.11.08 17:40:22 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/device/MROM.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.08 17:40:22 INFO  Attempting to connect to the build server...[0m
+2024.11.08 17:40:22 INFO  Found a Bloop server running[0m
+2024.11.08 17:40:22 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/wenjiu/ysyx-workbench/ysyxSoC/.metals/bsp.trace.json or /home/wenjiu/.cache/metals/bsp.trace.json[0m
+2024.11.08 17:40:23 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/device/MROM.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+Nov 08, 2024 5:40:23 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+2024.11.08 17:40:22 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/device/MROM.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.08 17:40:22 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/device/MROM.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+2024.11.08 17:40:22 INFO  no build target found for /home/wenjiu/ysyx-workbench/ysyxSoC/src/device/MROM.scala. Using presentation compiler with project's scala-library version: 3.3.4[0m
+Nov 08, 2024 5:40:23 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9
+Nov 08, 2024 5:40:23 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+2024.11.08 17:40:24 INFO  time: Connected to build server in 2.12s[0m
+2024.11.08 17:40:24 INFO  Connected to Build server: Bloop v2.0.3[0m
+2024.11.08 17:40:24 INFO  running doctor check[0m
+2024.11.08 17:40:24 INFO  java targets: rocketchip.hardfloat, mill-build-, rocketchip.diplomacy, rocketchip.cde, ysyxsoc, rocketchip, rocketchip.macros[0m
+2024.11.08 17:40:24 WARN  2.13.10 is no longer supported in the current Metals versions, using the last known supported version 1.3.3[0m
+2024.11.08 17:40:27 WARN  Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.[0m
+2024.11.08 17:40:27 INFO  time: indexed workspace in 3.25s[0m
+2024.11.08 17:40:28 INFO  compiling rocketchip.cde (1 scala source)[0m
+2024.11.08 17:40:28 INFO  compiling rocketchip.macros (1 scala source)[0m
+2024.11.08 17:40:28 INFO  compiling rocketchip.hardfloat (20 scala sources)[0m
+2024.11.08 17:40:28 INFO  time: compiled rocketchip.macros in 0.92s[0m
+2024.11.08 17:40:28 INFO  time: compiled rocketchip.cde in 0.92s[0m
+2024.11.08 17:40:28 INFO  compiling rocketchip.diplomacy (36 scala sources)[0m
+2024.11.08 17:40:31 INFO  time: compiled rocketchip.hardfloat in 3.87s[0m
+2024.11.08 17:40:31 INFO  time: compiled rocketchip.diplomacy in 3.33s[0m
+2024.11.08 17:40:31 INFO  compiling rocketchip (317 scala sources)[0m
+2024.11.08 17:41:00 WARN  8 deprecations[0m
+2024.11.08 17:41:00 WARN  78 deprecations (since 2.13.0)[0m
+2024.11.08 17:41:00 WARN  1 deprecation (since 2.13.7)[0m
+2024.11.08 17:41:00 WARN  27 deprecations (since CDE 0.1)[0m
+2024.11.08 17:41:00 WARN  10 deprecations (since diplomacy 1.0.0)[0m
+2024.11.08 17:41:00 WARN  36 deprecations (since rocketchip 2.0.0)[0m
+2024.11.08 17:41:00 WARN  160 deprecations in total; re-run with -deprecation for details[0m
+2024.11.08 17:41:00 WARN  20 feature warnings; re-run with -feature for details[0m
+2024.11.08 17:41:00 INFO  compiling ysyxsoc (35 scala sources)[0m
+2024.11.08 17:41:00 INFO  time: compiled rocketchip in 30s[0m
+2024.11.08 17:41:04 WARN  1 deprecation (since 2.13.0)[0m
+2024.11.08 17:41:04 WARN  1 deprecation (since 2.13.3)[0m
+2024.11.08 17:41:04 WARN  99 deprecations (since rocketchip 2.0.0)[0m
+2024.11.08 17:41:04 WARN  101 deprecations in total; re-run with -deprecation for details[0m
+2024.11.08 17:41:04 INFO  time: compiled ysyxsoc in 3.48s[0m
+Nov 10, 2024 1:29:20 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 10, 2024 1:34:20 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 10, 2024 1:44:21 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 10, 2024 2:12:04 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 217
+Nov 10, 2024 5:39:07 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 10, 2024 5:39:07 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 10, 2024 5:39:10 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 10, 2024 5:39:56 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
