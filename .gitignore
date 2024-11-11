@@ -3,3 +3,4 @@ out/
 .metals/**
 .metals/metals.log
 .metals/metals.mv.db
+.metals/metals.lock.db
