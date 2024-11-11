@@ -8,13 +8,17 @@ import org.chipsalliance.cde.config.Parameters
 import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.util._
 
+class VGASyncIO extends Bundle{
+  val hsync = Output(Bool())
+  val vsync = Output(Bool())
+  val valid = Output(Bool())
+}
+
 class VGAIO extends Bundle {
   val r = Output(UInt(8.W))
   val g = Output(UInt(8.W))
   val b = Output(UInt(8.W))
-  val hsync = Output(Bool())
-  val vsync = Output(Bool())
-  val valid = Output(Bool())
+  val sync = new VGASyncIO
 }
 
 class VGACtrlIO extends Bundle {
@@ -59,8 +63,9 @@ class VGAHelper extends BlackBox with HasBlackBoxInline {
     """.stripMargin)
 }
 
-class vgaChisel extends Module {
-  val io = IO(new VGACtrlIO)
+class vga_sync extends Module{
+  val io = IO(new VGASyncIO)
+  val xaddr, yaddr = IO(Output(UInt(10.W)))
 
   def h_front_porch = 96.U
   def h_active = 144.U
@@ -87,19 +92,30 @@ class vgaChisel extends Module {
     y_cnt := y_cnt + 1.U
   }
 
-  io.vga.hsync := (x_cnt > h_front_porch)
-  io.vga.vsync := (y_cnt > v_front_porch)
+  io.hsync := (x_cnt > h_front_porch)
+  io.vsync := (y_cnt > v_front_porch)
 
   val h_valid = Wire(Bool())
   val v_valid = Wire(Bool())
   h_valid := (x_cnt > h_active) & (x_cnt <= h_backporch)
   v_valid := (y_cnt > v_active) & (y_cnt <= v_backporch)
-  io.vga.valid := h_valid & v_valid
+  io.valid := h_valid & v_valid
+
+  xaddr := Mux(h_valid, x_cnt - h_active - 1.U, 0.U)
+  yaddr := Mux(v_valid, y_cnt - v_active - 1.U, 0.U)
+}
+
+class vgaChisel extends Module {
+  val io = IO(new VGACtrlIO)
+
+  val sync = Module(new vga_sync)
+
+  io.vga.sync <> sync.io
 
   val vga_helper = Module(new VGAHelper)
-  vga_helper.io.x_addr := Mux(h_valid, x_cnt - h_active - 1.U, 0.U)
-  vga_helper.io.y_addr := Mux(v_valid, y_cnt - v_active - 1.U, 0.U)
-  vga_helper.io.ren := h_valid & v_valid
+  vga_helper.io.x_addr := sync.xaddr
+  vga_helper.io.y_addr := sync.yaddr
+  vga_helper.io.ren := sync.io.valid
 
   io.vga.r := vga_helper.io.rdata(23, 16)
   io.vga.g := vga_helper.io.rdata(15, 8)
