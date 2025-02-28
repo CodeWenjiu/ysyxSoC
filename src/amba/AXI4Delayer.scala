@@ -50,9 +50,7 @@ class AXI4DelayerChisel extends Module {
   when(io.in.ar.fire) {
     delay_cnt_read := 0.U
     delay_target_read := 0.U
-  }
-
-  when(state_r === s_count) {
+  }.elsewhen(state_r === s_count) {
     exact_delay_cnt_read := Mux(exact_delay_cnt_read === 99.U, 0.U, exact_delay_cnt_read + 1.U)
     delay_cnt_read := delay_cnt_read + 1.U
     delay_target_read := delay_target_read + Mux(exact_delay_cnt_read === (r % 100 - 1).U, (r / 100).U, ((r / 100) + 1).U)
@@ -60,12 +58,10 @@ class AXI4DelayerChisel extends Module {
     delay_cnt_read := delay_cnt_read + 1.U
   }
 
-  when(RegNext(state_w) === s_wait && state_w === s_count) {
+  when(io.in.aw.fire) {
     delay_cnt_write := 0.U
     delay_target_write := 0.U
-  }
-
-  when(state_w === s_count) {
+  }.elsewhen(state_w === s_count) {
     exact_delay_cnt_write := Mux(exact_delay_cnt_write === 99.U, 0.U, exact_delay_cnt_write + 1.U)
     delay_cnt_write := delay_cnt_write + 1.U
     delay_target_write := delay_target_write + Mux(exact_delay_cnt_write === (r % 100 - 1).U, (r / 100).U, ((r / 100) + 1).U)
@@ -73,12 +69,12 @@ class AXI4DelayerChisel extends Module {
     delay_cnt_write := delay_cnt_write + 1.U
   }
 
-  when(state_r === s_wait){
+  when(state_r === s_wait || (io.out.r.valid && !RegNext(io.out.r.valid))){
     io.in.r.valid := false.B
     io.out.r.ready := false.B
   }
 
-  when(state_w === s_wait){
+  when(state_w === s_wait || (io.out.b.valid && !RegNext(io.out.b.valid))){
     io.in.b.valid := false.B
     io.out.b.ready := false.B
   }
