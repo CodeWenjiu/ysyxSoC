@@ -13,6 +13,123 @@ import freechips.rocketchip.amba.axi4._
 import freechips.rocketchip.amba.apb._
 import freechips.rocketchip.system.SimAXIMem
 
+class YSYXSOC_sram_bridge extends BlackBox with HasBlackBoxInline {
+    val io = IO(new Bundle{
+        val clock = Input(Clock())
+        val read  = Input(Bool())
+        val r_addr  = Input(UInt(32.W))
+        val r_data  = Output(UInt(32.W))
+        val write = Input(Bool())
+        val w_addr  = Input(UInt(32.W))
+        val w_data  = Input(UInt(32.W))
+        val w_strb  = Input(UInt(4.W))
+    })
+    setInline("YSYXSOC_SRAM_BRIDGE.v",
+    """module YSYXSOC_sram_bridge(
+      |    input  clock,
+      |    input  read,
+      |    input  [31:0] r_addr,
+      |    output reg [31:0] r_data,
+      |    input  write,
+      |    input  [31:0] w_addr,
+      |    input  [31:0] w_data,
+      |    input  [3:0]  w_strb
+      |);
+      |
+      |import "DPI-C" function void sram_read (input bit [31:0] addr, output bit [31:0] data);
+      |import "DPI-C" function void sram_write (input bit [31:0] addr, input bit [31:0] data, input bit [3:0] mask);
+      |
+      |    always @(posedge clock) begin
+      |        if (read) begin
+      |            sram_read(r_addr, r_data);
+      |        end
+      |        if (write) begin
+      |            sram_write(w_addr, w_data, w_strb);
+      |        end
+      |    end
+      |
+      |endmodule
+    """.stripMargin)
+}
+
+class SRAM(address: Seq[AddressSet])(implicit p: Parameters) extends LazyModule {
+    val beatBytes = 4
+    val node = AXI4SlaveNode(Seq(AXI4SlavePortParameters(
+        Seq(AXI4SlaveParameters(
+            address       = address,
+            executable    = true,
+            supportsWrite = TransferSizes(1, beatBytes),
+            supportsRead  = TransferSizes(1, beatBytes),
+            interleavedId = Some(0))
+        ),
+        beatBytes  = beatBytes)))
+        
+    lazy val module = new Impl
+    class Impl extends LazyModuleImp(this) {
+
+        val AXI = node.in(0)._1
+        
+        AXI.r.bits.id := RegEnable(AXI.ar.bits.id, AXI.ar.fire)
+        AXI.b.bits.id := RegEnable(AXI.aw.bits.id, AXI.aw.fire)
+        
+        val s_wait_addr :: s_burst :: s_wait_resp :: Nil = Enum(3)
+        
+        val state_r = RegInit(s_wait_addr)
+        val state_w = RegInit(s_wait_addr)
+        
+        val read_burst_counter = RegEnable(AXI.ar.bits.len, AXI.ar.fire)
+        val write_burst_counter = RegEnable(AXI.aw.bits.len, AXI.aw.fire)
+
+        val read_addr = RegEnable(AXI.ar.bits.addr + 4.U, AXI.ar.fire)
+
+        when(AXI.r.fire) {
+            read_burst_counter := read_burst_counter - 1.U
+            read_addr := read_addr + 4.U
+        }
+        when(AXI.w.fire) {
+            write_burst_counter := write_burst_counter - 1.U
+        }
+        
+        AXI.r.bits.last := read_burst_counter === 0.U
+
+        state_r := MuxLookup(state_r, s_wait_addr)(
+            Seq(
+                s_wait_addr -> Mux(AXI.ar.valid, Mux(AXI.ar.bits.burst(0), s_burst, s_wait_resp), s_wait_addr),
+                s_burst     -> Mux(read_burst_counter === 0.U, s_wait_addr, s_burst),
+                s_wait_resp -> Mux(AXI.r.fire, s_wait_addr, s_wait_resp),
+            )
+        )
+
+        state_w := MuxLookup(state_w, s_wait_addr)(
+            Seq(
+                s_wait_addr -> Mux(AXI.aw.fire, s_burst, s_wait_addr),
+                s_burst     -> Mux(write_burst_counter === 0.U,  s_wait_resp, s_burst),
+                s_wait_resp -> Mux(AXI.b.fire, s_wait_addr, s_wait_resp)
+            )
+        )
+
+        AXI.r.valid  := state_r === s_burst || state_r === s_wait_resp
+        AXI.ar.ready := state_r === s_wait_addr
+
+        AXI.aw.ready := state_w === s_wait_addr
+        AXI.w.ready  := state_w === s_burst
+        AXI.b.valid  := state_w === s_wait_resp
+
+        AXI.r.bits.resp := "b0".U
+        AXI.b.bits.resp := "b0".U
+        val bridge = Module(new YSYXSOC_sram_bridge)
+        bridge.io.clock := clock
+        bridge.io.read := (state_r === s_burst) || (AXI.ar.fire)
+        bridge.io.r_addr  := Mux(AXI.ar.fire, AXI.ar.bits.addr, read_addr)
+        AXI.r.bits.data := RegEnable(bridge.io.r_data, AXI.ar.fire || AXI.r.fire)
+
+        bridge.io.write := state_w === s_burst
+        bridge.io.w_addr  := RegEnable(AXI.aw.bits.addr, AXI.aw.fire)
+        bridge.io.w_data  := AXI.w.bits.data
+        bridge.io.w_strb  := AXI.w.bits.strb
+    }
+}
+
 object AXI4SlaveNodeGenerator {
   def apply(params: Option[MasterPortParams], address: Seq[AddressSet])(implicit valName: ValName) =
     AXI4SlaveNode(params.map(p => AXI4SlavePortParameters(
@@ -43,7 +160,8 @@ class ysyxSoCASIC(implicit p: Parameters) extends LazyModule {
   ))
   val lpsram = LazyModule(new APBPSRAM(AddressSet.misaligned(0x80000000L, 0x400000)))
   val lmrom = LazyModule(new AXI4MROM(AddressSet.misaligned(0x20000000, 0x1000)))
-  val sramNode = AXI4RAM(AddressSet.misaligned(0x0f000000, 0x2000).head, false, true, 4, None, Nil, false)
+  // val sramNode = AXI4RAM(AddressSet.misaligned(0x0f000000, 0x2000).head, false, true, 4, None, Nil, false)
+  val sramNode = LazyModule(new SRAM(AddressSet.misaligned(0x0f000000, 0x2000))).node
 
   val sdramAddressSet = AddressSet.misaligned(0xa0000000L, 0x2000000)
   val lsdram_apb = if (!Config.sdramUseAXI) Some(LazyModule(new APBSDRAM (sdramAddressSet))) else None
@@ -52,7 +170,7 @@ class ysyxSoCASIC(implicit p: Parameters) extends LazyModule {
   List(lspi.node, luart.node, lpsram.node, lgpio.node, lkeyboard.node, lvga.node).map(_ := apbxbar)
   List(apbxbar := APBDelayer() := AXI4ToAPB(), lmrom.node, sramNode).map(_ := xbar2)
   xbar2 := AXI4UserYanker(Some(1)) := AXI4Fragmenter() := xbar
-  if (Config.sdramUseAXI) lsdram_axi.get.node := ysyx.AXI4Delayer() := xbar
+  if (Config.sdramUseAXI) lsdram_axi.get.node := ysyx.AXI4Delayer() := xbar2
   else                    lsdram_apb.get.node := apbxbar
   if (Config.hasChipLink) chiplinkNode.get := xbar
   xbar := cpu.masterNode
