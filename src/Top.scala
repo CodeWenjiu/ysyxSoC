@@ -20,21 +20,7 @@ class ysyxSoCTop extends Module {
   mdut.externalPins := DontCare
 }
 
-class fpgaSoCTop extends Module {
-  implicit val config: Parameters = new Config(new Edge32BitConfig ++ new DefaultRV32Config)
-
-  val io = IO(new Bundle { })
-  val dut = LazyModule(new fpgaSoCFull)
-  val mdut = Module(dut.module)
-  mdut.dontTouchPorts()
-}
-
-object Elaborateysyx extends App {
+object Elaborate extends App {
   val firtoolOptions = Array("--disable-annotation-unknown")
   circt.stage.ChiselStage.emitSystemVerilogFile(new ysyxSoCTop, args, firtoolOptions)
-}
-
-object Elaboratefpga extends App {
-  val firtoolOptions = Array("--disable-annotation-unknown")
-  circt.stage.ChiselStage.emitSystemVerilogFile(new fpgaSoCTop, args, firtoolOptions)
 }
